@@ -3,9 +3,14 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        right = nums.index(0)
-        for left in range(right+1,len(nums)):
-            if nums[left] != 0:
-                nums[left],nums[right] = nums[right],nums[left]
-                right+=1
+        right = -1
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                right = i
+                break
+        if right != -1:
+            for left in range(right+1,len(nums)):
+                if nums[left] != 0:
+                    nums[left],nums[right] = nums[right],nums[left]
+                    right+=1
 
