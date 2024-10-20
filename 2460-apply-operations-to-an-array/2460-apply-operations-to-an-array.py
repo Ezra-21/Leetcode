@@ -10,7 +10,7 @@ class Solution:
             if nums[i] == 0:
                 left = i
                 break
-        if left != -1
+        if left != -1:
             for right in range(left+1,len(nums)):
                 if nums[right] != 0: 
                     nums[left],nums[right] = nums[right],nums[left]
