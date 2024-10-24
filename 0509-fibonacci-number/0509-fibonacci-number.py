@@ -1,9 +1,10 @@
 class Solution:
     def fib(self, n: int) -> int:
-        f = [0,1]
+        prev1,prev2 = 0,1
         for i in range(2,n+1):
-            f.append( f[i-1]+f[i-2])
-        
-        return f[n]
+            temp = prev1+prev2
+            prev1 = prev2
+            prev2 = temp
+        return prev2
 
         
