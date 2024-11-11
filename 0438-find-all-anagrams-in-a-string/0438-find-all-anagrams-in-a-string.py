@@ -1,9 +1,12 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         len_p,len_s = len(p),len(s)
+        ans = []
+        if len_p > len_s:
+            return ans
         dic_s = {}
         dic_p = {}
-        ans = []
+        
         for val in p:
             if val not in dic_p:
                 dic_p[val] = 0
