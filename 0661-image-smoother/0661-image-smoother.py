@@ -2,18 +2,16 @@ class Solution:
     def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
         row = len(img)
         col = len(img[0])
-        ans = [[0]*col for _ in range(row)]
-
-        for r in range(row):
-            for c in range(col):
-                total,count = 0,0
-                for i in range(r-1,r+2):
-                    for j in range(c-1,c+2):
-                        if i<0 or i==row or j<0 or j==col:
-                            # if the pointer move out of the bound when we find the surrounding elements of presented cell
-                            continue
-                        total += img[i][j]
-                        count += 1
+        new = [[0]*col for _ in range(row)]
+        for i in range(row):
+            for j in range(col):
+                summ,count = 0,0
                 
-                ans[r][c] = (total//count)
-        return ans
+                for r in range(i-1,i+2):
+                    for c in range(j-1,j+2):
+                        if (r>=0 and c>=0 and r<=row-1 and c<=col-1):
+                            count+=1
+                            summ+=img[r][c]
+                
+                new[i][j] = summ//count
+        return new
