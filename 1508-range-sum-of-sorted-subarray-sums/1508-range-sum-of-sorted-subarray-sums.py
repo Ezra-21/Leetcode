@@ -7,4 +7,4 @@ class Solution:
                 total += nums[j]
                 sum_arr.append(total)
         sum_arr.sort()
-        return sum(sum_arr[left-1:right])
+        return (sum(sum_arr[left-1:right])) % 1000000007
