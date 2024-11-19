@@ -11,11 +11,11 @@ class Solution:
             min_len = len(nums)
             for i , val in enumerate(nums):
                 prefix += val
-                ok = (prefix - remainder ) % remainder
+                ok = (prefix%p - remainder ) % p
                 if ok in prefic_dic:
                     min_len =  min(min_len,i-prefic_dic[ok])
                 
-                prefic_dic[prefix%remainder] = i
+                prefic_dic[prefix%p] = i
             return min_len
         ans = solve(remainder,nums)
         return ans if ans < len(nums) else -1
