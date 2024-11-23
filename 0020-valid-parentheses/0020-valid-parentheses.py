@@ -1,21 +1,20 @@
-
 class Solution:
     def isValid(self, s: str) -> bool:
-        lis = []
-        found = True
-        for char in s:
-            if char in "({[":
-                lis.append(char)
+        stack = []
+        for braket in s:
+            if braket == '[' or braket == '(' or braket == '{':
+                stack.append(braket)
             else:
-                if (len(lis)==0):
+                if not stack: return False
+                if braket == ']' and stack.pop() != '[':
                     return False
-                top = lis.pop() 
-                if char == ")" and top!="(":
+        
+                if braket == ')' and stack.pop() != '(':
                     return False
-                elif char == "}" and top!="{":
+        
+                if braket == '}' and stack.pop() != '{':
                     return False
-                elif char == "]" and top!="[":
-                    return False
-        if found and len(lis)==0:
-             return(True)
-        return(False)
+        return len(stack) == 0
+
+            
+        
