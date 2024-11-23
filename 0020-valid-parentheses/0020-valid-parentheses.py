@@ -14,7 +14,7 @@ class Solution:
         
                 if braket == '}' and stack.pop() != '{':
                     return False
-        return len(stack) == 0
+        return not stack
 
             
         
