@@ -1,15 +1,17 @@
 class Solution:
     def scoreOfParentheses(self, s: str) -> int:
+        res = 0
         stack = deque()
-        score = 0
-        for bracket in s:
-            if bracket == '(':
-                stack.append(score)
-                score = 0
+        for val in s:
+            count = 0
+            if val == '(':
+                stack.append(0)
             else:
-                score = stack.pop() + max(2*score,1)
-        
-        return score
-
-        
+                while stack[-1] != 0:
+                    count += stack.pop()
+                count = max(2*count,1)
+                stack.pop()
+                stack.append(count)
+        res = sum(stack)
+        return res
         
