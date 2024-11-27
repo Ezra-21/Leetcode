@@ -1,7 +1,7 @@
 class MyCircularDeque:
 
     def __init__(self, k: int):
-        self.queue = deque()
+        self.queue = deque(maxlen = k)
         self.k = k
         
 
