@@ -11,8 +11,7 @@ class Solution:
         for a in nums3:
             for b in nums4:
                 target = -(a+b)
-                if target in hashh:
-                    res+=hashh[target]
+                res+=hashh[target]
 
 
         return res
