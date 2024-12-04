@@ -4,12 +4,9 @@ class Solution:
         ans = 0
         n = len(colors)
         for i in range(n):
-            found = True
-            for j in range(i,i+2):
-                if colors[j%n] == colors[(j+1)%n]:
-                    found = False
-            if found:
-                ans+=1
+            if colors[i%n] != colors[(i+1)%n] and colors[(i+1)%n] != colors[(i+2)%n]:
+                ans += 1
+            
         return ans
 
         
