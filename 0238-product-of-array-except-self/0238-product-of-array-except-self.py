@@ -1,40 +1,25 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prefix = 1
-        suffix = 1
 
-        temp = 0
-        index = -1
+        total = 1
+        count_zero = 0
 
-        for i , val in enumerate(nums):
-            suffix *= val
-
-            if val == 0:
-                temp = 1
-                index = i
-
-            if i<len(nums)-1:
-                temp *= nums[i+1]
-
-        hashh = {index:temp}
-        ans = []
-        for i , val in enumerate(nums):
-            if i>0 :
-                prefix *= nums[i-1]
-            
-            if val!=0:
-                suffix//=val
+        for num in nums:
+            if num == 0:
+                count_zero += 1
             else:
-                if i in hashh:
-                    suffix = hashh[i]
+                total*=num
+        print(total)
+        ans = []
+        for num in nums:
+            if count_zero > 1:
+                ans.append(0)
+            elif count_zero == 1:
+                if num == 0:
+                    ans.append(total)
                 else:
-                    suffix = 0
-
-            ans.append(prefix*suffix)
+                    ans.append(0)
+            else:
+                ans.append(total//num)
 
         return ans
-
-
-        
-
-        
