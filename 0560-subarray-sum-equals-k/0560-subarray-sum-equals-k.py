@@ -7,8 +7,7 @@ class Solution:
         for i in range(len(nums)):
             prefix += nums[i]
             
-            if prefix-k in prefix_hash:
-                number_of_subarray += prefix_hash[prefix-k]
+            number_of_subarray += prefix_hash[prefix-k]
             
             prefix_hash[prefix] += 1
             
