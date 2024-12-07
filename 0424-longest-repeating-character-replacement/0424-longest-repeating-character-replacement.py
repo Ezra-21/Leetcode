@@ -1,25 +1,26 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        result = 0
-        for val in set(s):
-            result = max(result, self.solve(s, k, val))
-        return result
+        letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+ 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        res = 0
+        for val in letter:
+            res = max(res,self.solve(s,k,val))
+        return res
 
-    def solve(self, s, k, target):
-        ans, j = 0, 0  # Initialize answer and left pointer
-        current_k = k  # Store original k value for each target character
-
+    def solve(self,s,k,target):
+        j = 0
+        ans = 0
+        count_non = 0
         for i in range(len(s)):
-            if s[i] != target:
-                if current_k > 0:
-                    current_k -= 1
-                else:
-                    # Move left pointer to make room for replacements within limit
-                    while s[j] == target:
-                        j += 1
-                    j += 1  # Move past the first non-target character to reduce window size
+            if s[i]!=target:
+                count_non+=1
 
-            # Update maximum window length
-            ans = max(ans, i - j + 1)
+            while count_non>k:
+                if s[j]!=target:
+                    count_non-=1
+                j+=1
 
+
+            ans = max(ans,i-j+1)
         return ans
+
