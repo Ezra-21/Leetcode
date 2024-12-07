@@ -7,9 +7,7 @@ class Solution:
             count+=1
             if people[left] + people[right] <=limit:
                 left += 1
-                right -= 1
-            elif people[right] <= limit:
-                right -= 1
+            right -= 1
         return count
 
 
