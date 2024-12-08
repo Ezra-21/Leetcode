@@ -9,19 +9,17 @@ class Solution:
                 else:
                     num //= 2
             return count
+
         arr = []
-        hashh = {}
 
         for i in range(lo,hi+1):
-            arr.append(operation(i))
+            arr.append([operation(i),i])
 
-        for i in range(len(arr)):
-            hashh[arr[i]] = lo+i
-
+        
         arr.sort()
 
         
-        return hashh[arr[k-1]]
+        return arr[k-1][1]
 
 
 
