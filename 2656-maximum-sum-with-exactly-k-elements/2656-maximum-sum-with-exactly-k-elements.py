@@ -5,11 +5,6 @@ class Solution:
             if val>Max_num:
                 Max_num = val
 
-        ans = 0
-
-        for i in range(k):
-            ans += Max_num+i
-
-        return ans
+        return Max_num*k+k*(k-1)//2
 
         
