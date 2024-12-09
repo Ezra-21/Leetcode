@@ -3,16 +3,13 @@ class Solution:
         ans = 0
         nums.sort()
         j = 0
-        Min = nums[j]
         for i in range(1,len(nums)):
-            Max = nums[i]
-
-            if Max-Min <= 2*k:
-                ans = max(ans,i-j)
-            else:
+            while nums[i] - nums[j] > 2*k:
                 j+=1
-                Min = nums[j]
-        return ans+1
+
+            ans = max(ans,i-j+1)
+            
+        return ans
 
 
         
