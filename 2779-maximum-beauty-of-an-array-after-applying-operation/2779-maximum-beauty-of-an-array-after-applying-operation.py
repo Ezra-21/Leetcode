@@ -8,11 +8,11 @@ class Solution:
             Max = nums[i]
 
             if Max-Min <= 2*k:
-                ans = max(ans,i-j+1)
+                ans = max(ans,i-j)
             else:
                 j+=1
                 Min = nums[j]
-        return ans
+        return ans+1
 
 
         
