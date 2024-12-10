@@ -10,13 +10,14 @@ class Solution:
         left = 0
         right = n
         
-        while True:
+        while left<=right:
             mid = (left+right)//2
-            if guess(mid) == 0:
+            target = guess(mid)
+            if target == 0:
                 return mid
-            elif guess(mid) == 1:
+            elif target == 1:
                 left = mid+1
-            elif guess(mid) == -1:
-                right = mid-1 
+            elif target == -1:
+                right = mid-1
 
         
