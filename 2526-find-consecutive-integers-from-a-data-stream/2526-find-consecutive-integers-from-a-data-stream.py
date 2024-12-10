@@ -8,14 +8,10 @@ class DataStream:
 
     def consec(self, num: int) -> bool:
         if num == self.value:
-            self.count += 1
-            if self.count >= self.k:
-                return True     
+            self.count+=1
         else:
             self.count = 0
-        return False
-
-
+        return self.count >= self.k
         
 
 
