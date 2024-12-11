@@ -1,19 +1,13 @@
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
-        hashh = Counter()
+        hashh = {'a':-1,'b':-1,'c':-1}
         max_substring = 0
-        j = 0
+
         for i,char in enumerate(s):
-            hashh[char] += 1
+            hashh[char] = i
 
-            while len(hashh) == 3:
-                max_substring += len(s) - i
-                hashh[s[j]]-=1
-                if hashh[s[j]] == 0:
-                    del hashh[s[j]]
-
-                j+=1
-
+            if hashh['a']!=-1 and hashh['b']!=-1 and hashh['b']!=-1:
+                max_substring += min(hashh.values())+1
 
         return max_substring
 
