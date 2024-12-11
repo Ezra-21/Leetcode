@@ -4,11 +4,10 @@ class Solution:
         j,ans = 0, 0
         for i,val in enumerate(s):
             if val in sett:
-                while s[j] != val:
+                while val in sett:
                     sett.remove(s[j])
                     j+=1
-                sett.remove(s[j])
-                j+=1
+                
             sett.add(val)
             ans = max(ans,i-j+1)
         
