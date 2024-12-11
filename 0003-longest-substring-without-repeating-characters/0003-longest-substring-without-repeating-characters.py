@@ -3,16 +3,13 @@ class Solution:
         sett = set()
         j,ans = 0, 0
         for i,val in enumerate(s):
-            if val not in sett:
-                sett.add(val)
-            else:
+            if val in sett:
                 while s[j] != val:
                     sett.remove(s[j])
                     j+=1
                 sett.remove(s[j])
                 j+=1
-                sett.add(val)
-
+            sett.add(val)
             ans = max(ans,i-j+1)
         
         return ans
