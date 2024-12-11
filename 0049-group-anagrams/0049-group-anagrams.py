@@ -2,7 +2,7 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         hashh = defaultdict(list)
         for char in strs:
-            key = ''.join(sorted(char))
+            key = tuple(sorted(char))
             hashh[key].append(char)
 
         ans = []
