@@ -3,8 +3,8 @@ class Solution:
         if not nums:
             return 0
         ans = 1
-        nums = list(set(nums))
-        nums.sort()
+        nums = sorted(set(nums))
+        
         
         j = 0
         for i in range(1,len(nums)):
