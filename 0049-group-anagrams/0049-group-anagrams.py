@@ -5,11 +5,8 @@ class Solution:
             key = tuple(sorted(char))
             hashh[key].append(char)
 
-        ans = []
+        
 
-        for value in hashh.values():
-            ans.append(value)
-
-        return ans
+        return list(hashh.values())
 
         
