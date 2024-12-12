@@ -1,6 +1,9 @@
+
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        hashh1 = Counter(s)
-        hashh2 = Counter(t)
-        return hashh1==hashh2
-        
+        if len(s)!=len(t):
+            return False
+        for i in set(t):
+            if s.count(i)!=t.count(i):
+                return False
+        return True
