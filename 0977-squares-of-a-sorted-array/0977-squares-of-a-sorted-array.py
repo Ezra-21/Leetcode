@@ -9,6 +9,7 @@ class Solution:
             else:
                 ans.append(nums[left]*nums[left])
                 left+=1
+        ans.reverse()
 
-        return ans[::-1]
+        return ans
 
