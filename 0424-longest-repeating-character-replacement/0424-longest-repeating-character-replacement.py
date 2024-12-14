@@ -1,26 +1,26 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        result = 0
-        for val in set(s):
-            result = max(result,self.solve(s,k,val))
-        return result
 
-
-    def solve(self,s,k,target):
-        ans,j = 0,0
-        for i in range(len(s)):
-            if s[i] != target:
-                k-=1
-            while k<0:
-                if s[j] != target:
-                    k+=1
-                j+=1
-
+        def operation(s,k,char):
+            max_length = 0
+            j = 0
+            for i in range(len(s)):
+                if s[i] != char:
+                    k-=1
                     
-            ans = max(ans,i-j+1)
+                while k<0:
+                    if s[j] != char:
+                        k+=1
+                    j+=1
+                    
+                max_length = max(max_length,i-j+1)
+            return max_length
                 
-
-        return ans
-
-
         
+        unique = set(s)
+        ans = 0
+        for char in unique:
+            ans = max(ans,operation(s,k,char))
+        return ans
+            
+
