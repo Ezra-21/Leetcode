@@ -14,10 +14,12 @@ class Solution:
                 if word[i] in look_first:
                     if look_first[word[i]] != pattern[i]:
                         flag = False
+                        break
 
                 if pattern[i] in look_second:
                     if look_second[pattern[i]] != word[i]:
                         flag = False
+                        break
 
             if flag:
                 ans.append(word)
