@@ -1,24 +1,17 @@
 class Solution:
     def findUnsortedSubarray(self, nums: List[int]) -> int:
-        arr = nums.copy()
-        arr.sort()
+        arr = sorted(nums)
         left,right = 0,len(arr)-1
-        l,r = True,True
         while left<right:
-            if l and nums[left]!=arr[left]:
-                l = False
-            if r and nums[right]!=arr[right]:
-                r = False
-            
-            if l:
+            if nums[left]==arr[left]:
                 left+=1
-            if r:
+            if nums[right]==arr[right]:
                 right-=1
-            if not l and not r:
+            if nums[left]!=arr[left] and nums[right]!=arr[right]:
                 break
 
-        ans = right-left
-        return ans+1 if ans!=0 else 0
+
+        return right-left+1 if right-left!=0 else 0
                 
                 
         
