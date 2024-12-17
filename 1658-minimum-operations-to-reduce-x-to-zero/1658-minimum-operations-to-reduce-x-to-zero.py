@@ -7,7 +7,7 @@ class Solution:
         ans = -1
         for right in range(n):
             summ+=nums[right]
-            while summ>target and left<=right:
+            while summ>target and left<right:
                 summ-=nums[left]
                 left+=1
             if summ==target:
