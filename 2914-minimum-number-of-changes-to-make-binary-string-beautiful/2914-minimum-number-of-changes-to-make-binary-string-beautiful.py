@@ -5,8 +5,8 @@ class Solution:
         while j<len(s):
             if s[i]!=s[j]:
                 cnt+=1
-            i+=1
-            j+=1
+            i+=2
+            j+=2
         return cnt
 
         
