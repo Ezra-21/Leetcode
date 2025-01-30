@@ -16,6 +16,7 @@ class Solution:
             
             x %= place
             x //= 10
+            
 
             place //=100
 
