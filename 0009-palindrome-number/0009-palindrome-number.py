@@ -2,12 +2,19 @@ class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x<0:
             return False
-        str_num = str(x)
-        l,r = 0,len(str_num)-1
-        while l<r:
-            if str_num[l]!=str_num[r]:
+        if x == 0:
+            return True
+
+        length = math.floor(math.log10(x))+1
+        place_value = 10**(length-1)
+
+        while place_value!=0:
+            if (x//place_value)!=(x%10):
                 return False
-            l+=1
-            r-=1
+            x %= place_value
+            x //= 10 
+
+            place_value //= 100
         return True
-        
+
+
