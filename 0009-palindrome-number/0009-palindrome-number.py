@@ -1,10 +1,10 @@
+  
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x < 0:
             return False
         if x == 0:
             return True
-
         length = math.floor(math.log10(x))+1
         if length == 1:
             return True
@@ -22,4 +22,5 @@ class Solution:
         return True
 
 
+        
         
