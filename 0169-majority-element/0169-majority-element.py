@@ -1,9 +1,9 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        n = len(nums)
-        check = n//2
         hashh = Counter(nums)
-        for num in set(nums):
-            if hashh[num]>check:
-                return num
+        for val,fre in hashh.items():
+            if fre > len(nums)//2:
+                return val
+
+        
         
