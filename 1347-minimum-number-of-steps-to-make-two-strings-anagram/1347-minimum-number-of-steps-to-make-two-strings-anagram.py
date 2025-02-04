@@ -5,22 +5,14 @@ class Solution:
 
         step = 0
         
-        for val in t:
-            print(hashh_t,hashh_t)
-            print(val)
+        for val in hashh_t:
             if val in hashh_s:
-                hashh_s[val]-=1
-                hashh_t[val]-=1
-                if hashh_s[val]==0:
-                    del hashh_s[val]
-                if hashh_t[val]==0:
-                    del hashh_t[val]
-                print(hashh_t,hashh_t)
-                print(val)
+                if hashh_t[val]-hashh_s[val]>0:
+                    step+= (hashh_t[val]-hashh_s[val])
+               
             else:
-                print(val)
-                print(hashh_t,hashh_t)
+                
                 step+=hashh_t[val]
-        print('j')
+        
         return step
         
