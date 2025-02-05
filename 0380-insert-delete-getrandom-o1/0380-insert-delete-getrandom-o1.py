@@ -9,7 +9,6 @@ class RandomizedSet:
         if val not in self.dict:
             self.dict[val] = len(self.list)
             self.list.append(val)
-            print(self.list)
             return True
         else:
             return False
