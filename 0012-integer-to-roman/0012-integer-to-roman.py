@@ -16,8 +16,8 @@ class Solution:
                         1:['V','X']     
                     }
         ans = []
-        while num:
-            place = 10**(math.floor(log10(num)))
+        place = 10**(math.floor(log10(num)))
+        while place:
             first_num = num//(place)
             number = first_num*place
             if first_num!=4 and first_num!=9:
@@ -37,6 +37,7 @@ class Solution:
                             ans.append(hashh_check[value][1])
                         break
             num%=place
+            place//=10
         return ''.join(ans)
 
 
