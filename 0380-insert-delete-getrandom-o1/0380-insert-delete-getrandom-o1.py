@@ -9,6 +9,7 @@ class RandomizedSet:
         if val not in self.dict:
             self.dict[val] = len(self.list)
             self.list.append(val)
+            
             return True
         else:
             return False
@@ -16,11 +17,11 @@ class RandomizedSet:
 
     def remove(self, val: int) -> bool:
         if val in self.dict:
-            idx_del = self.dict[val]
-            self.list[idx_del] = self.list[-1]
-            self.dict[self.list[-1]] = idx_del
+            idx = self.dict[val]
             del self.dict[val]
-            self.list.pop()
+            self.list.pop(idx)
+            for i in range(idx,len(self.list)):
+                self.dict[self.list[i]] -= 1
             return True
         else:
             return False
