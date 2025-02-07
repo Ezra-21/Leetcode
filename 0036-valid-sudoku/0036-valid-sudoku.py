@@ -1,34 +1,29 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
+        for i in range(0,7,3):
+            
+            for j in range(0,7,3):
+                sett = set()
+                for r in range(0+i,3+i):
+                    for c in range(0+j,3+j):
+                        if board[r][c].isdigit():
+                            if board[r][c] not in sett:
+                                sett.add(board[r][c])
+                            else:
+                                return False
         for i in range(9):
-            check = set()
+            sett1 = set()
+            sett2 = set()
             for j in range(9):
-                if board[i][j] != '.' and board[i][j] in check:
-                    return False
-                if board[i][j] != '.':
-                    check.add(board[i][j])   
-            check1 = set()
-            for j in range(9):
-                if board[j][i] != '.' and board[j][i] in check1:
-                    return False
-                if board[j][i] != '.':
-                    check1.add(board[j][i])    
+                if board[i][j].isdigit():
+                    if board[i][j] not in sett1:
+                        sett1.add(board[i][j])
+                    else:
+                        return False
+                if board[j][i].isdigit():
+                    if board[j][i] not in sett2:
+                        sett2.add(board[j][i])
+                    else:
+                        return False
 
-
-        
-
-        for i in range(0,9,3):
-            for j in range(0,9,3):
-                check2 = set()
-                for m in range(i,i+3):
-                    for n in range(j,j+3):
-                        if board[m][n] != '.' and board[m][n] in check2:
-                            return False
-                        if board[m][n] != '.':
-                            check2.add(board[m][n])   
-
-                
-
-        return True  
-
-
+        return True
