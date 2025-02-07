@@ -9,8 +9,8 @@ class Solution:
         ans = 0
         print(hashh)
         for value in hashh.values():
-            if value>1:
-                ans+=8*((value*(value-1))//2)    
+
+            ans+=4*((value*(value-1)))    
 
         return ans         
         
