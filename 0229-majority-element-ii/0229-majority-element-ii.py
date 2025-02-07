@@ -1,10 +1,12 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
+        n = len(nums)
         hashh = Counter(nums)
         ans = []
-        for val,fre in hashh.items():
-            if fre>len(nums)//3:
-                ans.append(val)
+        for key,value in hashh.items():
+            if value>n//3:
+                ans.append(key)
 
         return ans
+
         
