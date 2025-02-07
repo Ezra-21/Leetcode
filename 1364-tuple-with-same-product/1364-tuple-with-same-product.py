@@ -7,7 +7,7 @@ class Solution:
                 hashh[pro]+=1
 
         ans = 0
-        print(hashh)
+        
         for value in hashh.values():
 
             ans+=4*((value*(value-1)))    
