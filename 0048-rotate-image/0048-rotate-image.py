@@ -3,15 +3,23 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        n = len(matrix)
-        new_mat = [[0]*n for _ in range(n)]
-        for i in range(n):
-            for j in range(n):
-                new_mat[j][i] = matrix[i][j]
+        left,right = 0,len(matrix)-1
+        while left<right:
+            top,bottom = left,right
+            for i in range(right-left):
+                temp1 = matrix[top+i][right]
+                matrix[top+i][right] = matrix[top][left+i]
+                temp2 = matrix[bottom][right-i]
+                matrix[bottom][right-i] = temp1
+                temp1 = matrix[bottom-i][left]
+                matrix[bottom-i][left] = temp2
+                matrix[top][left+i] = temp1
+            
+            right-=1
+            left+=1
 
-        for row in new_mat:
-            row.reverse()
+        return matrix
 
-        for i in range(n):
-            for j in range(n):
-                matrix[i][j] = new_mat[i][j]
+
+
+        
