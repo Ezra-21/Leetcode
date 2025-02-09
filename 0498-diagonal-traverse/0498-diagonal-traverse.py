@@ -1,15 +1,14 @@
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        row = len(mat)
-        col = len(mat[0])
-        order = [[] for _ in range(row + col - 1)]
+        hashh = defaultdict(list)
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                hashh[i+j].append(mat[i][j])
         ans = []
-        for i in range(row):
-            for j in range(col):
-                order[i + j].append(mat[i][j])
+        for val,listt in hashh.items():
+            if val%2==0:
+                listt.reverse()
+            ans.extend(listt)
 
-        for i in range(len(order)):
-            if i % 2 == 0:
-                order[i].reverse()
-            ans.extend(order[i])
         return ans
+        
