@@ -3,8 +3,7 @@ class Solution:
         for row in range(len(image)):
             for col in range(len(image[0])):
                 image[row][col] = abs(image[row][col] - 1)
-        for i in range(len(image)):
-            image[i].reverse()
+            image[row].reverse()
 
         return image
         
