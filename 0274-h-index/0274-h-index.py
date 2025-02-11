@@ -6,6 +6,6 @@ class Solution:
             if i+1<=citations[i]:
                 count += 1
             else:
-                break
+                return count
 
         return count
