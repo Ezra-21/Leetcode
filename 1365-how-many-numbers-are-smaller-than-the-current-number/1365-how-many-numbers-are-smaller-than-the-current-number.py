@@ -1,16 +1,14 @@
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
-        temp = nums.copy()
-        temp.sort()
         hashh = {}
-        for i,num in enumerate(temp):
+        arr = sorted(nums)
+        for i,num in enumerate(arr):
             if num not in hashh:
                 hashh[num] = i
-
         ans = []
-        for val in nums:
-            ans.append(hashh[val])
+        for num in nums:
+            ans.append(hashh[num])
 
         return ans
-            
+
         
