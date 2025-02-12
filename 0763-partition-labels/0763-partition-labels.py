@@ -1,20 +1,18 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         hashh = {}
-        for i,val in enumerate(s):
-            hashh[val] = i
+        for i in range(len(s)):
+            hashh[s[i]] = i
 
+        j = hashh[s[0]]
+        k = 0
         ans = []
-        end_point = 0
-        j = 0
-        for i,val in enumerate(s):
-            end_point = max(end_point,hashh[val])
-            if i == end_point:
-                ans.append(i-j+1)
-                j = i+1
+        for i in range(len(s)):
+            j = max(j,hashh[s[i]])
+            if i==j:
+                ans.append(i-k+1)
+                k = i+1
 
         return ans
 
-
-            
         
