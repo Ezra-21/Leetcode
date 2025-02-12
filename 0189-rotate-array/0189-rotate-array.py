@@ -3,8 +3,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n = len(nums)
-        k = k%n
-        arr = nums[-k:] + nums[:n-k]
-        for  i in range(n):
-            nums[i] = arr[i]
+        k = k%len(nums)
+        num = nums[-k:]+nums[:-k]
+        for i in range(len(nums)):
+            nums[i] = num[i]
+        
