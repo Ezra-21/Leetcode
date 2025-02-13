@@ -4,7 +4,6 @@ class Solution:
         left = 0
         for i in range(len(nums)):
             summ += nums[i]
-            
 
             if i-left >= k:
                 summ-=nums[left]
