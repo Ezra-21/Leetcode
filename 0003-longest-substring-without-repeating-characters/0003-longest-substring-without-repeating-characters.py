@@ -8,7 +8,7 @@ class Solution:
                 while s[j]!=s[i]:
                     del hashh[s[j]]
                     j+=1
-                hashh[s[j]]-=1
+                del hashh[s[j]]
                 j+=1
 
             hashh[s[i]]+=1
