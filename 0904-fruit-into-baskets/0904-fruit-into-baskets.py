@@ -1,20 +1,17 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        hashh = {}
-        ans = 0
-        start = 0
+        hashh_collect = Counter()
+        l = 0
+        maxi = 0
         for i in range(len(fruits)):
-            if fruits[i] not in hashh:
-                hashh[fruits[i]] = 0
-            hashh[fruits[i]] += 1
+            hashh_collect[fruits[i]]+=1
+            while len(hashh_collect)>2:
+                hashh_collect[fruits[l]]-=1
+                if hashh_collect[fruits[l]] == 0:
+                    del hashh_collect[fruits[l]]
+                l+=1
 
-            while len(hashh)>2:
-                hashh[fruits[start]]-=1
-                if hashh[fruits[start]] == 0:
-                    del hashh[fruits[start]]
-                start+=1
+            maxi = max(maxi,i-l+1)
 
-            
-            ans = max(ans,i-start+1)
-        return ans
-            
+        return maxi
+        
