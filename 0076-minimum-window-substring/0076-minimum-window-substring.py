@@ -8,6 +8,7 @@ class Solution:
             return True
 
         n,m = len(s),len(t)
+
         if m>n:
             return ''
         hashh_t = Counter(t)
@@ -16,7 +17,7 @@ class Solution:
         j = 0
         for i in range(n):
             hashh_include[s[i]]+=1
-            while check(hashh_include,hashh_t):
+            while (i-j+1)>=len(t) and check(hashh_include,hashh_t):
                 if length>(i-j+1):
                     length = (i-j+1)
                     index = [j,i]
