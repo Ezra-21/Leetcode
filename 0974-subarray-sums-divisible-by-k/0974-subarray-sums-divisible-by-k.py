@@ -1,18 +1,15 @@
-class Solution:#43%9=2
+class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        hashh = Counter({0:1})
-        prefix = 0
+        hashh = {0:1}
         ans = 0
+        prefix = 0
         for num in nums:
             prefix+=num
-            remainder = prefix%k
-            if remainder in hashh:
-                ans+=hashh[remainder]
+            remain = prefix%k
+            if remain in hashh:
+                ans+=hashh[remain]
 
-            hashh[remainder]+=1
+            hashh[remain] = hashh.get(remain,0)+1
 
         return ans
 
-
-        
-        
