@@ -1,12 +1,18 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        hashh = Counter({0:1})
-        summ = 0
+        hashh = {0:1}
+        prefix = 0
         ans = 0
         for i in range(len(nums)):
-            summ+=nums[i]
-            if summ - k in hashh:
-                ans += hashh[summ-k]
+            prefix+=nums[i]
+            if prefix-k in hashh:
+                ans+=hashh[prefix-k]
+            if prefix not in hashh:
+                hashh[prefix] = 0
+            hashh[prefix]+=1
 
-            hashh[summ] += 1
         return ans
+
+
+
+        
