@@ -1,18 +1,17 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        for i in range(len(nums)):
-            if nums[i]==0:
-                nums[i] = -1
-        for i in range(1,len(nums)):
-            nums[i]+=nums[i-1]
-        nums = [0]+nums
-
-        hashh = {}
-        for i,val in enumerate(nums):
-            hashh[val] = i
-
+        map = {0:-1}
+        count = 0
         max_len = 0
-        for i,val in enumerate(nums):
-            max_len = max(max_len,(hashh[val]-i))
 
+
+        for i in range(len(nums)):
+            count += 1 if nums[i] == 1 else -1
+            
+            if count in map:
+                max_len = max(max_len, i - map[count])
+            else:
+                map[count] = i
         return max_len
+
+                
