@@ -1,19 +1,14 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         hashh = {0:-1}
-        nums = nums
+        prefix = 0
         max_len = 0
-        
         for i in range(len(nums)):
-            if nums[i]==0:
-                nums[i] = -1
-            if i>0:
-                nums[i]+=nums[i-1]
-          
-            if nums[i] not in hashh:
-                hashh[nums[i]] = i
+            prefix += 1 if nums[i]==1 else -1
+            if prefix not in hashh:
+                hashh[prefix] = i
             else:
-                max_len = max(max_len,i-hashh[nums[i]])
+                max_len = max(max_len,i-hashh[prefix])
 
         return max_len
 
