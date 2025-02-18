@@ -1,17 +1,20 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        map = {0:-1}
-        count = 0
+        hashh = {0:-1}
+        nums = nums
         max_len = 0
-
-
+        
         for i in range(len(nums)):
-            count += 1 if nums[i] == 1 else -1
-            
-            if count in map:
-                max_len = max(max_len, i - map[count])
+            if nums[i]==0:
+                nums[i] = -1
+            if i>0:
+                nums[i]+=nums[i-1]
+          
+            if nums[i] not in hashh:
+                hashh[nums[i]] = i
             else:
-                map[count] = i
+                max_len = max(max_len,i-hashh[nums[i]])
+
         return max_len
 
-                
+        
