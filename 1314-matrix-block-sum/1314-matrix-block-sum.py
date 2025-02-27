@@ -1,22 +1,23 @@
 class Solution:
-    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
-        row,col = len(mat),len(mat[0])
-        prefixSum = [[0]*(col+1) for _ in range(row+1)]
+    def matrixBlockSum(self, matrix: List[List[int]], k: int) -> List[List[int]]:
+        row = len(matrix)
+        col = len(matrix[0])
+        c_m = [[0]*(col+1) for _ in range(row+1)] 
+        for r in range(1,row+1):
+            for c in range(1,col+1):
+                c_m[r][c] = c_m[r-1][c]+c_m[r][c-1]+matrix[r-1][c-1]-c_m[r-1][c-1]
 
+        ans = [[0]* col for _ in range(row)]
         for i in range(row):
             for j in range(col):
-                prefixSum[i+1][j+1] = prefixSum[i][j+1]+prefixSum[i+1][j]-prefixSum[i][j]+mat[i][j]
+                row1 = max(0,i-k)
+                col1 = max(0,j-k)
+                row2 = min(row-1,i+k)
+                col2 = min(col-1,j+k)
+                result = c_m[row2+1][col2+1]-c_m[row2+1][col1]-c_m[row1][col2+1]+c_m[row1][col1]
+                ans[i][j] = result
+                
+        return ans
 
-        new_mat = [[0]*(col) for _ in range(row)]
-
-        for i in range(row):
-            for j in range(col):
-                r1,c1 = max(0,i-k) , max(0,j-k)
-                r2,c2 = min(row-1,i+k),min((col-1,j+k))
-
-                summ = prefixSum[r2+1][c2+1]-prefixSum[r2+1][c1]-prefixSum[r1][c2+1]+prefixSum[r1][c1]
-                new_mat[i][j] = summ
-
-        return new_mat
 
         
