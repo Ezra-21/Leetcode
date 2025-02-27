@@ -7,7 +7,6 @@ class Solution:
                 summ_even+=nums[i]
             else:
                 summ_odd+=nums[i]
-        print(summ_even,summ_odd)
         prev_odd = 0
         prev_even = 0
         ans = 0
