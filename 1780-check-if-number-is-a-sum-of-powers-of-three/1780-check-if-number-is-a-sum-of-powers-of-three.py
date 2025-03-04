@@ -1,7 +1,7 @@
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
         arr = []
-        m = int(math.pow(n,1/2))+1
+        m = int(math.pow(n,1/3))+1
         for i in range(m):
             b = 3**i
             arr.append(b)
