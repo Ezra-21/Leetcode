@@ -1,14 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        bracket_map = { '}':'{',']':'[',')':'(' }
-        for bracket in s:
-            if bracket in bracket_map.values():
-                stack.append(bracket)
+        hashh = {')':'(','}':'{',']':'['}
+        stack = deque()
+        for braket in s:
+            if braket not in hashh:
+                stack.append(braket)
             else:
-                if not stack or stack.pop() != bracket_map[bracket]:
+                if not stack or stack.pop() != hashh[braket]:
                     return False
-        return not stack
 
-            
+        return len(stack) ==0 
         
