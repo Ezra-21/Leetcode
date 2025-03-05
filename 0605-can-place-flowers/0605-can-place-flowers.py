@@ -18,7 +18,7 @@ class Solution:
                     else:
                         n-=1
                     i+=1
-            if n==0:
+            if n<=0:
                 return True
         return n == 0
 
