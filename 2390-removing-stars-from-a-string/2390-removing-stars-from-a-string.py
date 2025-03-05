@@ -3,8 +3,7 @@ class Solution:
         stack = deque()
         for val in s:
             if val == '*':
-                if stack:
-                    stack.pop()
+                stack.pop()
             else:
                 stack.append(val)
 
