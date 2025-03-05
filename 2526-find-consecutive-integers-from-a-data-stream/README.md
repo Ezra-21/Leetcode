@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream">2526. Find Consecutive Integers from a Data Stream</a></h2><h3>Medium</h3><hr><p>For a stream of integers, implement a data structure that checks if the last <code>k</code> integers parsed in the stream are <strong>equal</strong> to <code>value</code>.</p>
+<h2><a href="https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream/">2526. Find Consecutive Integers from a Data Stream</a></h2><h3>Medium</h3><hr><p>For a stream of integers, implement a data structure that checks if the last <code>k</code> integers parsed in the stream are <strong>equal</strong> to <code>value</code>.</p>
 
 <p>Implement the <strong>DataStream</strong> class:</p>
 
