@@ -1,25 +1,25 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack = deque()
-        check = {'/','*','+','-'}
-        def calculation(a,b,operator):
-            if operator == '+':
-                return b+a
-            if operator == '-':
-                return b-a
-            if operator == '/':
-                return int(b/a)
-            if operator == '*':
-                return b*a
-
-        for value in tokens:
-            if value in check:
-                a = stack.pop()
-                b = stack.pop()
-                store =  calculation(a,b,value) 
-                stack.append(store)
+        def operation(num1,num2,sign):
+            if sign == '+':
+                return num1+num2
+            if sign == '-':
+                return num1-num2
+            if sign == '*':
+                return num1*num2
+            if sign == '/':
+                return int(num1/num2)
+        op = {'+','-','*','/'}
+        stack = []
+        for c in tokens:
+            if c in op:
+                n2 = int(stack.pop())
+                n1 = int(stack.pop())
+                result = operation(n1,n2,c)
+                stack.append(result)
             else:
-                stack.append(int(value))
+                stack.append(c)
 
-        return stack[0]
+        return int)
+        
         
