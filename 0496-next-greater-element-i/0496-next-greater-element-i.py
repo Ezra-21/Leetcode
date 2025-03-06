@@ -1,24 +1,15 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        n,m = len(nums1),len(nums2)
-        
-        ans = []
-        for i in range(n):
-            flag = True
-            j = 0
-            while j<m:
-                if nums1[i]==nums2[j]:
-                    j+=1
-                    while j<m:
-                        if nums2[j]>nums1[i]:
-                            ans.append(nums2[j])
-                            flag = False
-                            break
-                        j+=1
-                    break
-                j+=1
-            if flag:
-                ans.append(-1)
+        hashh = {val:i for i,val in enumerate(nums1)}
+        ans = [-1]*(len(nums1))
+        stack = []
+        for val in nums2:
+            while stack and stack[-1]<val:
+                num = stack.pop()
+                idx = hashh[num]
+                ans[idx] = val
+            if val in hashh:
+                stack.append(val)
 
         return ans
 
