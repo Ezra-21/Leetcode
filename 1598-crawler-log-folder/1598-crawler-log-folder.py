@@ -1,14 +1,13 @@
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
-        stack = deque()
-        for path in logs:
-            if path == '../':
-                if stack:
-                    stack.pop()
-            elif path == './':
+        count = 0
+        for log in logs:
+            if log=='../':
+                count = max(0,count-1)
+            elif log == './':
                 continue
             else:
-                stack.append(path)
+                count+=1
 
-        return len(stack) 
+        return count
         
