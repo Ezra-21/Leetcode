@@ -1,25 +1,26 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        def operation(num1,num2,sign):
+        stack = deque()
+        sett = {'*','/','+','-'}
+        ans = 0
+        def calculate(sign,num1,num2):
             if sign == '+':
                 return num1+num2
-            if sign == '-':
-                return num1-num2
-            if sign == '*':
+            elif sign == '*':
                 return num1*num2
-            if sign == '/':
+            elif sign == '-':
+                return num1-num2
+            elif sign == '/':
                 return int(num1/num2)
-        op = {'+','-','*','/'}
-        stack = []
-        for c in tokens:
-            if c in op:
-                n2 = int(stack.pop())
-                n1 = int(stack.pop())
-                result = operation(n1,n2,c)
-                stack.append(result)
-            else:
-                stack.append(c)
 
-        return int)
+        for token in tokens:
+            if token in sett:
+                a = stack.pop()
+                b = stack.pop()
+                ans = calculate(token,b,a)
+                stack.append(ans)
+            else:
+                stack.append(int(token))
         
-        
+        return stack[0]
+           
