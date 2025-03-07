@@ -1,6 +1,6 @@
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
-        arr = [0]*(10**6+1)
+        arr = [0]*(right+1)
         arr[1] = -1
         for i in range(2,right+1):
             if arr[i]==0:
