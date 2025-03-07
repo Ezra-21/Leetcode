@@ -1,27 +1,29 @@
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
-        arr = [0]*(right+1)
-        arr[1] = -1
-        for i in range(2,right+1):
-            if arr[i]==0:
-                j = i*i
-                while j<right+1:
-                    arr[j] = -1
-                    j+=i
-        
-        collect = []
-        for num in range(left,right+1):
-            if arr[num]==0:
-                collect.append(num)
+        if right<=2:
+            return [-1,-1]
 
-        Minn = float('inf')
-        hashh = {}
-        for i in range(len(collect)-1):
-            diff = collect[i+1]-collect[i]
-            if Minn>diff:
-                Minn = diff
-                hashh[Minn] = [collect[i],collect[i+1]]
+        is_prime = [True]*(right+1)
+        is_prime[1] = False
+        last = int(math.sqrt(right))+1
+        for i in range(2,last):
+            if is_prime[i]:
+                for j in range(i*i,right+1,i):
+                    is_prime[j] = False
 
-        return hashh[Minn] if Minn!=float('inf') else [-1,-1]
+        prime = [num for num in range(left,right+1) if is_prime[num]]
+        if len(prime)<2:
+            return [-1,-1]
+            
+        min_pair = [prime[0],prime[1]]
+        min_diff = prime[1] - prime[0]
+
+        for i in range(1,len(prime)-1):
+            diff = prime[i+1]-prime[i]
+            if min_diff>diff:
+                min_pair = [prime[i],prime[i+1]]
+                min_diff = diff
+
+        return min_pair
 
         
