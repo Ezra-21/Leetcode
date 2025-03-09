@@ -28,7 +28,7 @@ class Solution:
                 m2 = prev_smaller[i]
             summ+=(arr[i]*(m1*m2))
 
-        return summ
+        return summ%(10**9 + 7)
 
 
 
