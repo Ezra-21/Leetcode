@@ -1,16 +1,30 @@
+class Linked:
+    def __init__(self, val):
+        self.next = None
+        self.val = val
+
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        j=[]
-        for item in range(1,n+1):
-            j.append(item)
-        i=0
-        while len(j)!=1:
-            l=len(j)
-            remover=i+k-1
-            j.remove(j[remover%l])
-            i=remover%l
+        dummy = Linked(1)
+        curr = dummy
+        for i in range(2, n + 1):
+            node = Linked(i)
+            curr.next = node
+            curr = node
+        curr.next = dummy  
 
-        return(j[0])
+        curr = dummy  
 
-##### TIME COMPLEXITY O(n)
-##### SPACE COMPLETY O(1)
+        temp = curr
+        
+
+        while n > 1:
+            for _ in range(k - 1):
+                temp = curr
+                curr = curr.next
+
+            temp.next = curr.next  
+            curr = temp.next  
+            n -= 1  
+
+        return curr.val  
