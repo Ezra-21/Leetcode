@@ -5,16 +5,18 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def dfs(self,node,ans):
+        if not node:
+            return
+
+        self.dfs(node.left,ans)
+        self.dfs(node.right,ans)
+        ans.append(node.val)
+
+        return ans
+        
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
-        def traverse(node):
-            if node==None:
-                return
-            traverse(node.left)
-            traverse(node.right)
-            ans.append(node.val)
-            
-            
+        self.dfs(root,ans)
 
-        traverse(root)
         return ans
