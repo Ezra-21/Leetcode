@@ -2,13 +2,21 @@ class Solution:
     def predictTheWinner(self, nums: List[int]) -> bool:
         
         def solve(l,r):
+            if dp[l][r]!=-1:
+                return dp[l][r]
+
             if l==r:
                 return nums[l]
 
             left = nums[l] - solve(l+1,r)
             right = nums[r] - solve(l,r-1)
+            dp[l][r] = max(left,right)
 
-            return max(left,right)
+            return dp[l][r]
+        
+        n = len(nums)
+        dp = [[-1]*n for _ in range(n)]
+        return solve(0,len(nums)-1) >= 0
 
-        l,r = 0,len(nums)-1
-        return solve(l,r)>=0
+
+
