@@ -1,19 +1,15 @@
+from typing import List
+
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
         ans = 0
-        for i in range(len(nums)):
+        n = len(nums)
+
+        for i in range(n - 2):
             if nums[i] == 0:
-                if i+2<len(nums):
-                    for j in range(i,i+3):
-                        nums[j] = abs(nums[j]-1)
-                    ans+=1
-                else:
-                    return -1
-        return(ans)
-
-            
-            
-
+                nums[i] ^= 1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                ans += 1
         
-
-        
+        return ans if 0 not in nums else -1
