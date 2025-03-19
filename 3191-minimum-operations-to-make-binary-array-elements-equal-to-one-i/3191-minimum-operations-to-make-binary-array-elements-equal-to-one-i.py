@@ -11,4 +11,4 @@ class Solution:
                 nums[i + 2] ^= 1
                 ans += 1
         
-        return ans if 0 not in nums else -1
+        return ans if 0 not in nums[-2:] else -1
