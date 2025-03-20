@@ -1,19 +1,18 @@
 class Solution:
     def longestNiceSubstring(self, s: str) -> str:
-        if len(s) < 2:
-            return ""
-
         def solve(sub):
-            if len(sub) < 2:
-                return ""
+            for char in sub:
+                if char.lower() not in sub or char.upper() not in sub:
+                    return False
+            return True
 
-            unique = set(sub)
-            for i, char in enumerate(sub):
-                if char.lower() not in unique or char.upper() not in unique:
-                    left = solve(sub[:i])
-                    right = solve(sub[i + 1:])
-                    return left if len(left) >= len(right) else right
 
-            return sub  
+        ans = ''
+        for i in range(len(s)):
+            for j in range(i,len(s)):
+                sub = s[i:j+1]
+                if solve(sub) and len(sub)>len(ans):
+                    ans = sub
+        return ans
 
-        return solve(s)
+                
