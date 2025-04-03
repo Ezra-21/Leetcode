@@ -1,18 +1,9 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         hashh = Counter(nums)
-        ans = []
-        mostFrequent_element = []
-        for num,fre in hashh.items():
-            mostFrequent_element.append([fre,num])
-
-        mostFrequent_element.sort(reverse=True)
-        for i in range(k):
-            ans.append(mostFrequent_element[i][1])
-
+        arr = []
+        for val,fre in hashh.items():
+            arr.append([fre,val])
+        arr.sort(reverse=True)
+        ans = [val for fre,val in arr[:k]]
         return ans
-
-
-
-        
-        
