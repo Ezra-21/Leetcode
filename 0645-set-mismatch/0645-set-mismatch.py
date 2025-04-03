@@ -6,8 +6,5 @@ class Solution:
             if fre>1:
                 miss = val
                 break
-        target = n*(n+1)//2
-        summ = sum(nums)
-        rem = target-summ
-        print(rem)
-        return miss,miss+rem
+        target,summ = n*(n+1)//2,sum(nums)
+        return miss,miss+(target-summ)
