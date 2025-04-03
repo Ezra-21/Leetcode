@@ -4,8 +4,9 @@ class Solution:
         
         for val in nums[1:]:
             res = max(res, diff * val)  
+            diff = max(diff, maxi - val)
             maxi = max(maxi, val)  
-            diff = max(diff, maxi - val)  
+
             
         
         return res
