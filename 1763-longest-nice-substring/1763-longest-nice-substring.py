@@ -1,19 +1,18 @@
 class Solution:
     def longestNiceSubstring(self, s: str) -> str:
-        if len(s) < 2:
-            return ""
+        def nice_substring(substring):
+            for char in substring:
+                if char.lower() not in substring or char.upper() not in substring:
+                    return False
+            return True
 
-        def solve(sub):
-            if len(sub) < 2:
-                return ""
 
-            unique = set(sub)
-            for i, char in enumerate(sub):
-                if char.swapcase() not in unique:
-                    left = solve(sub[:i])
-                    right = solve(sub[i + 1:])
-                    return left if len(left) >= len(right) else right
+        longest_subtring = ''
+        for i in range(len(s)):
+            for j in range(i,len(s)):
+                substring = s[i:j+1]
+                if nice_substring(substring) and len(substring)>len(longest_subtring):
+                    longest_subtring = substring
+        return longest_subtring
 
-            return sub 
-
-        return solve(s)
+                
