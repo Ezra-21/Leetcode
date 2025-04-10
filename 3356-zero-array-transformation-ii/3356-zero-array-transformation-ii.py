@@ -1,27 +1,22 @@
 class Solution:
     def minZeroArray(self, nums: List[int], queries: List[List[int]]) -> int:
+        if sum(nums)==0:
+            return 0
         n = len(nums)
-        prefix = [0]*(n+1)
-        summ = 0
-        j = 0
-
-        for i,(s,e,val) in enumerate(queries):
-            while j<n:
-                if nums[j]<=summ+prefix[j]:
-                    summ+=prefix[j]
-                    j+=1
-                else:
-                    break
-                if j==n:
-                    return i
-
-            if e<j:
+        arr = [0]*(n+1)
+        i = 0
+        for j,(s,e,c) in enumerate(queries):
+            if i>e:
                 continue
-            s = max(j,s)
-            prefix[s] += val
-            prefix[e+1] -= val
+            s = max(s,i)
+            arr[s]+=c
+            arr[e+1]-=c
 
-            
+            while i<len(nums) and arr[i]>=nums[i]:
+                i+=1
+                if i==len(nums):
+                    return j+1
+                arr[i]+=arr[i-1]
+
         return -1
-
 
