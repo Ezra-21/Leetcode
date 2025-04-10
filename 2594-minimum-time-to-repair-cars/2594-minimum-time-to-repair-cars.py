@@ -13,15 +13,12 @@ class Solution:
                 else:
                     break
             
-            if count>cars:
+            if count>=cars:
                 right = mid-1
                 ans = min(ans,mid)
-            elif count<cars:
-                left = mid+1
             else:
-                right = mid-1
-                ans = min(ans,mid)
-
-
+                left = mid+1
+                
+            
         return ans
                                             
