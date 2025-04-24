@@ -7,5 +7,5 @@ class Solution:
         if n%2==0:
             half = self.myPow(x,n//2)
             return half*half
-        else:
-            return x*self.myPow(x,n-1)
+        
+        return x*self.myPow(x,n-1)
