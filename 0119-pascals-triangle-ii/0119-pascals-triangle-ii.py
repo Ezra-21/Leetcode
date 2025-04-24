@@ -1,11 +1,12 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        pascal = [[1]]
-        for i in range(rowIndex):
-            temp = [0] + pascal[-1] + [0]
-            row = []
-            for j in range(len(pascal[-1])+1):
-                row.append(temp[j] + temp[j+1])   
-            pascal.append(row)
-            
-        return pascal[-1]
+        ans = [[0,1,0]]
+        for _ in range(rowIndex):
+            temp,use = [0],ans[-1]
+            for i in range(1,len(use)):
+                temp.append(use[i-1]+use[i])
+            temp.append(0)
+            ans.append(temp)
+
+        return ans[-1][1:-1]
+
