@@ -5,6 +5,5 @@ class Solution:
         while nums[0]<k and len(nums)>=2:
             count += 1
             a,b = heapq.heappop(nums),heapq.heappop(nums)
-            new = (min(a,b)*2 + max(a,b))
-            heapq.heappush(nums,new)
+            heapq.heappush(nums,a*2+b)
         return count
