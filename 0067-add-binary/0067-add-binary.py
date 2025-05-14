@@ -13,8 +13,8 @@ class Solution:
                 bb = int(b[i])
 
             temp = aa+bb+c
-            res = temp%2
-            c = temp//2
+            res = temp&1
+            c = temp>>1
             ans.append(str(res))
         if c>0:
             ans.append('1')
