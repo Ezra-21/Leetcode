@@ -1,21 +1,23 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        carry = 0
-        a,b = a[::-1],b[::-1]
-        res = ''
-        for i in range(max(len(a),len(b))):
-            digitA = int(a[i]) if i < len(a) else 0
-            digitB = int(b[i]) if i < len(b) else 0
+        n,m = len(a),len(b)
+        ans = []
+        c = 0
+        a = a[::-1]
+        b = b[::-1]
+        for i in range(max(n,m)):
+            aa,bb = 0,0
+            if i<n:
+                aa = int(a[i])
+            if i<m:
+                bb = int(b[i])
 
-            total = digitA + digitB + carry
+            temp = aa+bb+c
+            res = temp%2
+            c = temp//2
+            ans.append(str(res))
+        if c>0:
+            ans.append('1')
+        ans.reverse()
+        return ''.join(ans)
 
-            summ = total & 1 # same as summ = total % 2
-
-            res = str(summ)+res
-
-            carry = total >> 1 # same as summ = total // 2
-            
-        if carry == 1:
-            res = '1'+res
-
-        return res
