@@ -9,11 +9,13 @@ class Solution:
                 right-=1
             return True
         ans = s[0]
+        count = 1
         for i in range(len(s)):
-            for j in range(i,len(s)):
+            for j in range(i+count,len(s)):
                 substring = s[i:j+1]
                 if palindrom(substring) and len(substring)>len(ans):
                     ans = substring
+                    count = len(ans)
 
         return ans
         
