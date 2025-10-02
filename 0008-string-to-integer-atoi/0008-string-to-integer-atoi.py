@@ -1,29 +1,28 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
-        INT_MIN = -2**31
-        INT_MAX = 2**31-1
-        ans = ''
-        pos,check = True,True
-        for i,ch in enumerate(s):
-            if check and (ch=='-' or ch=='+'):
-                if ch=='-':
-                    pos = False
-                check = False
-            elif ch.isdigit() :
-                ans+=ch
-                check = False
-            elif (ch == ' ' and check):
-                continue
-            else:
-                break
-        if not ans:
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31 
+        s = s.lstrip()
+        if not s:
             return 0
-        ans = int(ans)
-        if not pos:
-            ans = -ans
-        return max(INT_MIN, min(ans, INT_MAX))
-           
-                
+        sign = 1
+        if s[0] == '-':
+            sign = -1
+            s = s[1:]
+        elif s[0] == '+':
+            s = s[1:]
+        
+        def recursion(index,number):
+            if index == len(s) or not s[index].isdigit():
+                return sign*number
+            
+            digit = int(s[index])
+            number = number*10 + digit
 
+            if number > INT_MAX:
+                return INT_MAX if sign == 1 else INT_MIN
             
-            
+            return recursion(index+1 , number)
+
+        
+        return recursion(0,0)
