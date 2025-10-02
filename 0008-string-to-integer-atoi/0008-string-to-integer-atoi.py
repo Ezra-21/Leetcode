@@ -16,13 +16,12 @@ class Solution:
                 continue
             else:
                 break
-        if ans:
-            ans = int(ans)
-            ans = ans if pos else -ans
-            ans = max(INT_MIN, min(ans, INT_MAX))
-        else:
-            ans = 0
-        return ans
+        if not ans:
+            return 0
+        ans = int(ans)
+        if not pos:
+            ans = -ans
+        return max(INT_MIN, min(ans, INT_MAX))
            
                 
 
