@@ -1,7 +1,7 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
         INT_MIN = -2**31
-        INT_MAX = 2**31
+        INT_MAX = 2**31-1
         ans = ''
         pos,check = True,True
         for i,ch in enumerate(s):
@@ -18,10 +18,11 @@ class Solution:
                 break
         if ans:
             ans = int(ans)
+            ans = ans if pos else -ans
             ans = max(INT_MIN, min(ans, INT_MAX))
         else:
             ans = 0
-        return ans if pos else -ans
+        return ans
            
                 
 
