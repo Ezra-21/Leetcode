@@ -1,14 +1,19 @@
 class Solution:
-    def solve(self,s,n):
-        if n==1:
-            return s
-        t =  ''.join('1' if ch == '0' else '0' for ch in s)[::-1]
-        s = s + '1' + t
-        return self.solve(s,n-1)
-
     def findKthBit(self, n: int, k: int) -> str:
-        s = '0'
-        s = self.solve(s,n)
-        print(s)
+        def helper(n):
+            if n == 1:
+                return '0'
 
-        return s[k-1]
+            res = helper(n-1)
+            temp = ''
+            for ch in res:
+                if ch == '0':
+                    temp+='1'
+                else:
+                    temp+='0'
+                
+            res = res+'1'+temp[::-1]
+            return res
+        
+        return helper(n)[k-1]
+        
