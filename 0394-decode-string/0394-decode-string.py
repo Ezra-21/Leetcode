@@ -1,18 +1,25 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        stack = []
+        def helper(i):
+            res = ""
+            num = 0
 
-        for ch in s:
-            if ch == ']':
-                res = ''
-                while stack[-1]!='[':
-                    res=stack.pop()+res
-                stack.pop()
-                num = ''
-                while stack and stack[-1].isdigit():
-                    num = stack.pop()+num
+            while i < len(s):
+                if s[i].isdigit():
+                    num = num * 10 + int(s[i])
+                    i += 1
 
-                stack.append(int(num)*res)
-            else:
-                stack.append(ch)
-        return ''.join(stack)
+                elif s[i] == '[':
+                    decoded, i = helper(i + 1)
+                    res += num * decoded
+                    num = 0  
+                elif s[i] == ']':
+                    return res, i + 1
+                else:
+                    res += s[i]
+                    i += 1
+
+            return res, i
+
+        decoded, _ = helper(0)
+        return decoded
