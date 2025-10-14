@@ -1,16 +1,18 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        def helper(n):
-            if n == 0:
-                return {""}
-            if n == 1:
-                return {"()"}
-            
-            res = set()
-            for i in range(n):
-                for left in helper(i):
-                    for right in helper(n - 1 - i):
-                        res.add("(" + left + ")" + right)
-            return res
+        res = []
 
-        return list(helper(n))
+        def dfs(openP, closeP, s):
+            if openP == closeP and openP + closeP == n * 2:
+                res.append(s)
+                return
+            
+            if openP < n:
+                dfs(openP + 1, closeP, s + "(")
+            
+            if closeP < openP:
+                dfs(openP, closeP + 1, s + ")")
+
+        dfs(0, 0, "")
+
+        return res
