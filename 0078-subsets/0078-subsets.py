@@ -1,14 +1,19 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         ans = []
-        total = 1<<len(nums)
-        for i in range(total):
-            temp = []
-            for j in range(len(nums)):
-                if i & (1<<j):
-                    temp.append(nums[j])
-            ans.append(temp)
+        subset = []
+        def dfs(i):
+            if i==len(nums):
+                ans.append(subset.copy())
+                return
+
+            subset.append(nums[i])
+            dfs(i+1)
+
+            subset.pop()
+            dfs(i+1)
+
+        dfs(0)
         return ans
 
-
-
+        
