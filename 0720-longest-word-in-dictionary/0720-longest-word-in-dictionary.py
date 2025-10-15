@@ -1,15 +1,16 @@
-from typing import List
-
 class Solution:
     def longestWord(self, words: List[str]) -> str:
-        words.sort()  # Sort lexicographically
-        sett = set([''])  # Add empty string to handle single-character words
+        words.sort()
+        sett = set()
         res = ''
-        
         for word in words:
-            if word[:-1] in sett:  # Check if the prefix exists
+            
+            if word[:-1] in sett or len(word)==1:
                 sett.add(word)
-                if len(word) > len(res):
+                if len(res) < len(word):
                     res = word
-        
+            
+            
+
         return res
+        
