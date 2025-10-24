@@ -7,29 +7,25 @@
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         queue = deque([root])
-        level = 0
-        
+        odd = False
         while queue:
             n = len(queue)
-            collect = []
-
-            for _ in range(n):
-                val = queue.popleft()
-                collect.append(val)
-                if val.left:
-                    queue.append(val.left)
-                if val.right:
-                    queue.append(val.right)
+            if odd:
+                i,j = 0,len(queue)-1
+                while i<j:
+                    queue[i].val,queue[j].val = queue[j].val,queue[i].val
+                    i+=1
+                    j-=1
+                odd = False
+            else:
+                odd = True
             
-            if level%2==1:
-                left,right = 0,len(collect)-1
-                while left<right:
-                    collect[left].val,collect[right].val = collect[right].val,collect[left].val
-                    left+=1
-                    right-=1
-            level+=1
-
+            while n:
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+                n-=1
         return root
-
-
-
+            
