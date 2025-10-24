@@ -11,14 +11,14 @@ class MagicDictionary:
             if len(word) != len(searchWord):
                 continue
 
-            diff = 0
+            difference = 0
             for a, b in zip(word, searchWord):
                 if a != b:
-                    diff += 1
-                if diff > 1:
+                    difference += 1
+                if difference > 1:
                     break
 
-            if diff == 1:
+            if difference == 1:
                 return True
 
         return False
