@@ -6,9 +6,10 @@
 #         self.right = right
 class Solution:
     def find(self,head):
-        while head.left:
-            head = head.left
-        return head
+        if not head.left:
+            return head
+        return self.find(head.left)
+
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
             return None
@@ -21,16 +22,14 @@ class Solution:
 
             if not root.left and not root.right:
                 return root.right
-
-            if not root.left:
-                return root.right
-                
-            if not root.right:
+            elif not root.left:
+                return root.right   
+            elif not root.right:
                 return root.left
-
-            newvalue = self.find(root.right)
-            root.val = newvalue.val
-            root.right = self.deleteNode(root.right,newvalue.val)
+            else:
+                newvalue = self.find(root.right)
+                root.val = newvalue.val
+                root.right = self.deleteNode(root.right,newvalue.val)
         return root
 
         
