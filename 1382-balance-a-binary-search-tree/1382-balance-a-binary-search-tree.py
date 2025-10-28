@@ -15,18 +15,18 @@ class Solution:
             dfs(root.right)
         dfs(root)
 
-        def balance(arr):
-            if not arr:
+        def balance(start,end):
+            if start > end:
                 return None
 
-            mid = len(arr) // 2
+            mid = (start+end) // 2
             node = TreeNode(arr[mid])
 
-            node.left = balance(arr[:mid])
-            node.right = balance(arr[mid+1:])
+            node.left = balance(start,mid-1)
+            node.right = balance(mid+1,end)
 
             return node
-        return balance(arr)
+        return balance(0,len(arr) - 1)
 
             
 
