@@ -1,17 +1,17 @@
 class Solution:
     def validStrings(self, n: int) -> List[str]:
-        res = []
+        ans = []
+        def dfs(res,check):
+            if len(res) == n:
+                ans.append(res)
+                return
+            
+            dfs(res+'1',True)
+            
+            if check:
+                dfs(res+'0',False)
+        dfs('',True)
+        return ans
+            
 
-        def dfs(temp,check):
-
-            if len(temp) == n:
-                res.append(temp)
-                return 
-
-            if check == 1:
-                dfs(temp+'0',0)
-
-            dfs(temp+'1',1)
-
-        dfs('',1)
-        return res
+        
