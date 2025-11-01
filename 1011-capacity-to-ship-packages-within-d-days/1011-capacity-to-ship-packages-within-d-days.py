@@ -12,7 +12,7 @@ class Solution:
                     summ = val
                 
             if count <= days:
-                ans = weight
+                ans = min(weight,ans)
                 right = weight-1 
             else:
                 left = weight+1
