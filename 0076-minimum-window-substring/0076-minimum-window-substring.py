@@ -7,7 +7,7 @@ class Solution:
         hashh_t = Counter(t)
         hashh_s = Counter()
         
-        length, index = float('inf'), []
+        length, ans = float('inf'), ''
         check= 0
         l = 0
         
@@ -20,11 +20,11 @@ class Solution:
             while check == len(hashh_t):
                 if length > i-l + 1:
                     length = i - l + 1
-                    index = [l, i]
+                    ans = s[l:i+1]
 
                 hashh_s[s[l]]-=1
                 if s[l] in hashh_t and hashh_s[s[l]]<hashh_t[s[l]]:
                     check -= 1  
                 l += 1
 
-        return s[index[0]:index[1] + 1] if index else ''
+        return ans
