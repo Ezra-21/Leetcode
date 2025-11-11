@@ -1,18 +1,20 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
+        if not n:
+            return res
 
-        def dfs(openP, closeP, s):
-            if openP == closeP and openP + closeP == n * 2:
-                res.append(s)
+        def helper(curr, open_br,closed_br):
+            if len(curr) == 2*n:
+                res.append(curr)
                 return
             
-            if openP < n:
-                dfs(openP + 1, closeP, s + "(")
+            if open_br < n:
+                helper(curr+'(',open_br+1,closed_br)
             
-            if closeP < openP:
-                dfs(openP, closeP + 1, s + ")")
-
-        dfs(0, 0, "")
-
+            if closed_br < open_br:
+                helper(curr+')',open_br,closed_br+1)
+            return
+        
+        helper('',0,0)
         return res
