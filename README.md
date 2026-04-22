@@ -9,3 +9,14 @@ Created with :heart: by [LeetPush](https://github.com/husamahmud/LeetPush)
  - Hüsam: [GitHub](https://github.com/husamahmud) - [LinkedIn](https://www.linkedin.com/in/husamahmud/)
 
  Happy coding! 🚀
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0290-word-pattern](https://github.com/Ezra-21/Leetcode/tree/main/0290-word-pattern/) | Easy |
+## String
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0290-word-pattern](https://github.com/Ezra-21/Leetcode/tree/main/0290-word-pattern/) | Easy |
+<!---LeetCode Topics End-->
